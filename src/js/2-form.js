@@ -16,10 +16,10 @@ const inputForm = document.querySelector(".feedback-form")
 inputForm.addEventListener("input", handlerInput)
 function handlerInput(evt) {
     if (evt.target.tagName === "INPUT") {
-        formData.email = evt.target.value
+        formData.email = evt.target.value.trim()
     }
     else if (evt.target.tagName === "TEXTAREA") {
-        formData.message = evt.target.value
+        formData.message = evt.target.value.trim()
     }
     localStorage.setItem(nameLs, JSON.stringify(formData))
 }
@@ -27,7 +27,7 @@ function handlerInput(evt) {
 inputForm.addEventListener("submit", handlerSubmit)
 function handlerSubmit(evt) {
     evt.preventDefault()
-    if (!formData.email || !formData.message) {
+    if (!formData.email.trim() || !formData.message.trim()) {
         alert("Fill please all fields")
     }
     else {
